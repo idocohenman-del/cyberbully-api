@@ -10,8 +10,8 @@ COPY api/requirements.txt ./requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt gdown
 
 # CPU-only PyTorch + ML inference deps (separate layer for caching)
-RUN pip install --no-cache-dir numpy transformers accelerate \
-    torch --index-url https://download.pytorch.org/whl/cpu
+RUN pip install --no-cache-dir numpy transformers accelerate
+RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu
 
 COPY api/ ./api/
 COPY src/ ./src/

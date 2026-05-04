@@ -11,7 +11,7 @@ if [ ! -f "$MODEL_DIR/model.safetensors" ]; then
     if [ -n "$MODEL_DRIVE_URL" ]; then
         echo "Downloading model from Google Drive (~260 MB, one-time)..."
         mkdir -p /data
-        gdown --folder "$MODEL_DRIVE_URL" -O /data --remaining-ok
+        gdown --folder "$MODEL_DRIVE_URL" -O /data
         echo "Model download complete."
     else
         echo "WARNING: MODEL_DRIVE_URL is not set — classify endpoint will be unavailable."

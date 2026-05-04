@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: cyberbully-api
+    env: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        value: sqlite:////data/cyberbully.db
+      - key: MODEL_DIR
+        value: /data/distilbert_cyberbullying
+      - key: FIREBASE_SERVICE_ACCOUNT
+        sync: false        # paste base64-encoded JSON in the Render dashboard
+      - key: MODEL_DRIVE_URL
+        sync: false        # paste your Google Drive folder URL in the Render dashboard
+    disk:
+      name: data
+      mountPath: /data
+      sizeGB: 2

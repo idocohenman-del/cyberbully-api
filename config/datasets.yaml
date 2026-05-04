@@ -1,0 +1,179 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Dataset configuration
+# Each entry: name, file path, text/label column names, label_map (orig → 0/1)
+#   0 = safe   1 = bullying
+# ─────────────────────────────────────────────────────────────────────────────
+
+datasets:
+
+  # ── Kaggle Cyberbullying Tweets ───────────────────────────────────────────
+  - name: "cyberbullying_tweets"
+    file: "data/cyberbullying_tweets.csv"
+    text_column: "tweet_text"
+    label_column: "cyberbullying_type"
+    label_map:
+      "not_cyberbullying": 0
+      "age":               1
+      "ethnicity":         1
+      "gender":            1
+      "religion":          1
+      "other_cyberbullying": 1
+
+  # ── Davidson et al. Twitter Hate Speech (0=hate, 1=offensive, 2=neither) ──
+  - name: "davidson_hate"
+    file: "data/labeled_data.csv"
+    text_column: "tweet"
+    label_column: "class"
+    label_map:
+      0: 1   # hate speech  → bullying
+      1: 1   # offensive    → bullying
+      2: 0   # neither      → safe
+
+  # ── Wikipedia Talk Pages — Aggression (101k safe, 14k aggressive) ─────────
+  - name: "aggression"
+    file: "data/aggression_parsed_dataset.csv"
+    text_column: "Text"
+    label_column: "oh_label"
+    label_map:
+      0: 0
+      1: 1
+
+  # ── Wikipedia Talk Pages — Personal Attacks ───────────────────────────────
+  - name: "attack"
+    file: "data/attack_parsed_dataset.csv"
+    text_column: "Text"
+    label_column: "oh_label"
+    label_map:
+      0: 0
+      1: 1
+
+  # ── Wikipedia Talk Pages — Toxicity (large; many safe examples) ───────────
+  - name: "toxicity"
+    file: "data/toxicity_parsed_dataset.csv"
+    text_column: "Text"
+    label_column: "oh_label"
+    label_map:
+      0: 0
+      1: 1
+
+  # ── Jigsaw Toxic Comments — Kaggle (144k safe, 15k toxic) ────────────────
+  - name: "jigsaw_toxic"
+    file: "data/train.csv"
+    text_column: "comment_text"
+    label_column: "malignant"
+    label_map:
+      0: 0
+      1: 1
+
+  # ── Waseem & Hovy — Racism ────────────────────────────────────────────────
+  - name: "twitter_racism"
+    file: "data/twitter_racism_parsed_dataset.csv"
+    text_column: "Text"
+    label_column: "oh_label"
+    label_map:
+      0: 0
+      1: 1
+
+  # ── Waseem & Hovy — Sexism ────────────────────────────────────────────────
+  - name: "twitter_sexism"
+    file: "data/twitter_sexism_parsed_dataset.csv"
+    text_column: "Text"
+    label_column: "oh_label"
+    label_map:
+      0: 0
+      1: 1
+
+  # ── Twitter general ───────────────────────────────────────────────────────
+  - name: "twitter_parsed"
+    file: "data/twitter_parsed_dataset.csv"
+    text_column: "Text"
+    label_column: "oh_label"
+    label_map:
+      0: 0
+      1: 1
+
+  # ── Kaggle Hate Speech (parsed) ───────────────────────────────────────────
+  - name: "kaggle_hate"
+    file: "data/kaggle_parsed_dataset.csv"
+    text_column: "Text"
+    label_column: "oh_label"
+    label_map:
+      0: 0
+      1: 1
+
+  # ── YouTube Comments ──────────────────────────────────────────────────────
+  - name: "youtube"
+    file: "data/youtube_parsed_dataset.csv"
+    text_column: "Text"
+    label_column: "oh_label"
+    label_map:
+      0: 0
+      1: 1
+
+  # ── HateXplain (final processed) ─────────────────────────────────────────
+  - name: "hatexplain"
+    file: "data/final_hateXplain.csv"
+    text_column: "comment"
+    label_column: "label"
+    label_map:
+      "normal":     0
+      "offensive":  1
+      "hatespeech": 1
+
+  # ── Cyberbullying types (threats / hate_speech / harassment) ─────────────
+  - name: "cyberbullying_types"
+    file: "data/cyberbullying_dataset.csv"
+    text_column: "text"
+    label_column: "label"
+    label_map:
+      "neutral":    0
+      "threats":    1
+      "hate_speech": 1
+      "harassment": 1
+
+  # ── Dynamically Generated Hate Dataset ───────────────────────────────────
+  - name: "dynamic_hate"
+    file: "data/2020-12-31-DynamicallyGeneratedHateDataset-entries-v0.1.csv"
+    text_column: "text"
+    label_column: "label"
+    label_map:
+      "hate":    1
+      "nothate": 0
+
+  # ── Insult dataset ────────────────────────────────────────────────────────
+  - name: "insult"
+    file: "data/dataset (2).csv"
+    text_column: "Comment"
+    label_column: "Insult"
+    label_map:
+      0: 0
+      1: 1
+
+  # ── Twitter binary (Anurag et al.) ───────────────────────────────────────
+  - name: "twitter_binary"
+    file: "data/train1.csv"
+    text_column: "tweet"
+    label_column: "label"
+    label_map:
+      0: 0
+      1: 1
+
+  # ── Ultimate cyberbullying dataset (multi-class: 0=safe, 1-3=bullying) ───
+  - name: "ultimate_cyberbullying"
+    file: "data/ultimate_cyberbullying_dataset.csv"
+    text_column: "text"
+    label_column: "label"
+    label_map:
+      "0.0": 0
+      "1.0": 1
+      "2.0": 1
+      "3.0": 1
+
+  # ── Merged cyberbullying dataset (Excel, 75k rows, pre-labeled 0/1) ───────
+  - name: "cyberbullying_merged"
+    file: "data/cyberbullying_merged.xlsx"
+    text_column: "A"
+    label_column: "B"
+    label_map:
+      0: 0
+      1: 1

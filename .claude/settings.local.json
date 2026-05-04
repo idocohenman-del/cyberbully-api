@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(flutter pub *)",
+      "Bash(flutter emulators *)",
+      "Bash(pip install *)",
+      "Bash(conda env *)",
+      "Bash(python -c \"import sqlalchemy; print\\('sqlalchemy ok'\\)\")"
+    ]
+  }
+}

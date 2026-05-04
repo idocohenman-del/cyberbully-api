@@ -1,0 +1,22 @@
+# Secrets — never commit these
+firebase_service_account.json
+.env
+
+# Model weights — too large for git, stored on server disk
+models/
+
+# Database
+*.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Training data — not needed for deployment
+data/
